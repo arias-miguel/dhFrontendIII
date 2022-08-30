@@ -6,14 +6,18 @@
 // PROPS: App deberá pasar por props lo necesario a sus componenetes internos.
 import { useState } from "react";
 import Cabecera from "./components/Cabecera";
-// import Listado from "./components/Listado";
+import Listado from "./components/Listado";
+import data from "./components/data.json"
 
+const products = data 
 function App() {
  const [shoppingCart,setShoppingCart]= useState(0)
+
+ 
   return (
     <div className="App">
       <Cabecera shoppingCount={shoppingCart}/>
-      {/* <Listado/> */}
+      <Listado products={products}/>
     </div>
   );
 }
