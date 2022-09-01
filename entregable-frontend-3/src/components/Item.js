@@ -16,14 +16,16 @@ export default function Item(props) {
     
   
   return (
-    <form key={id} name={id} onSubmit={props.sumCart} className='producto'>
+    <form name={id} onSubmit={props.sumCart} className='producto'>
       <h3>{producto.nombre}</h3>
       <p>{producto.descripcion}</p>
-      <h5>En stock :
-        { cant===0? <span>"agotado"</span>: <p>{cant}</p>  
+      <h5>En stock: {cant===0? <span>"agotado"</span>: <p>{cant}</p>  
         }
       </h5>
-      <button type="submit">COMPRAR</button>
+        { cant===0? 
+        <button type="submit" disabled>SIN STOCK</button>:
+        <button type="submit">COMPRAR</button>  
+        }
     </form>
   )
 }

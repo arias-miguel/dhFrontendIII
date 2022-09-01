@@ -15,21 +15,25 @@ function App() {
  
  function sumCart(event){
     event.preventDefault();
-    const id= event.target.name;
+
     setShoppingCart(shoppingCart+1);
+
+    const id= event.target.name;
     const updatedOSArray = products.map(p =>
       p.id === id
-        ? { ...p, stock: p.stock-1 }
-        : p
+        ?{ ...p, stock: p.stock-1 }
+        :p
     );
     setProducts(updatedOSArray)
-    // products.lessStock.stock = products.lessStock.stock-1;
-    
+ }
+ function reset(){
+   setProducts(data)
+   setShoppingCart(0)
  }
 
   return (
     <div className="App">
-      <Cabecera shoppingCount={shoppingCart}/>
+      <Cabecera shoppingCount={shoppingCart} reset={reset}/>
       <Listado products={products} sumCart={sumCart}/>
     </div>
   );
