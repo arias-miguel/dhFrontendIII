@@ -12,17 +12,18 @@
 
 export default function Item(props) {
     const {id,producto,stock }= props.products
-//     id: "2"
-// producto:
-// descripcion: "Las zapatillas Puma Shuffle ADP están confeccionadas en materiales sintéticos. De caña baja, con ajuste personalizado gracias al sistema de cordones, sus perforaciones le dan un estilo urbano que se fusiona con la inserción del logo PUMA N°1 y PUMA N°2 para que camines la calle de la ciudad con un calzado sofisticado."
-// nombre: "Zapatillas Puma Shuffle"
-
+    let cant = stock
+    
+  
   return (
-    <div key={id} className='producto'>
+    <form key={id} name={id} onSubmit={props.sumCart} className='producto'>
       <h3>{producto.nombre}</h3>
       <p>{producto.descripcion}</p>
-      <h5>En stock :<span>{stock}</span></h5>
-      <button>COMPRAR</button>
-    </div>
+      <h5>En stock :
+        { cant===0? <span>"agotado"</span>: <p>{cant}</p>  
+        }
+      </h5>
+      <button type="submit">COMPRAR</button>
+    </form>
   )
 }

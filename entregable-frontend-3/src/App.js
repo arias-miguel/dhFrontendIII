@@ -9,15 +9,28 @@ import Cabecera from "./components/Cabecera";
 import Listado from "./components/Listado";
 import data from "./components/data.json"
 
-const products = data 
 function App() {
- const [shoppingCart,setShoppingCart]= useState(0)
-
+ const [shoppingCart,setShoppingCart]= useState(0);
+ const [products, setProducts] = useState(data)
  
+ function sumCart(event){
+    event.preventDefault();
+    const id= event.target.name;
+    setShoppingCart(shoppingCart+1);
+    const updatedOSArray = products.map(p =>
+      p.id === id
+        ? { ...p, stock: p.stock-1 }
+        : p
+    );
+    setProducts(updatedOSArray)
+    // products.lessStock.stock = products.lessStock.stock-1;
+    
+ }
+
   return (
     <div className="App">
       <Cabecera shoppingCount={shoppingCart}/>
-      <Listado products={products}/>
+      <Listado products={products} sumCart={sumCart}/>
     </div>
   );
 }

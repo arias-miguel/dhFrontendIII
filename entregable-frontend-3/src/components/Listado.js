@@ -16,7 +16,7 @@ export default function Listado(props) {
     <div className='container'>
       {
         props.products.map((element,index)=>(
-          <Item key={index} products={element}/>
+          <Item key={index} products={element} sumCart={props.sumCart}/>
         ))
       } 
     </div>
